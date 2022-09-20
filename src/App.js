@@ -3,6 +3,7 @@ import './App.css';
 import About from './Pages/About/About';
 import Home from './Pages/Home/Home';
 import Login from './Pages/Login/Login';
+import SignUp from './Pages/Login/SignUp';
 import Navbar from './Pages/Shared/Navbar';
 import NotFound from './Pages/Shared/NotFound';
 
@@ -15,6 +16,7 @@ function App() {
         <Route path='/home' element={<Home />}></Route>
         <Route path='/about' element={<About />}></Route>
         <Route path='/login' element={<Login />}></Route>
+        <Route path='/signup' element={<SignUp />}></Route>
         <Route path='*' element={<NotFound />}></Route>
       </Routes>
       
