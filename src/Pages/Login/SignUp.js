@@ -1,10 +1,10 @@
 import React from "react";
 import {
     useCreateUserWithEmailAndPassword,
-  useSignInWithEmailAndPassword,
   useSignInWithFacebook,
   useSignInWithGithub,
   useSignInWithGoogle,
+  useUpdateProfile,
 } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import Loading from "../Shared/Loading";
@@ -24,6 +24,7 @@ const SignUp = () => {
     useSignInWithFacebook(auth);
   const [signInWithGithub, git_user, git_loading, git_error] =
     useSignInWithGithub(auth);
+    const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
   const {
     register,
@@ -32,55 +33,60 @@ const SignUp = () => {
   } = useForm();
 
   let signInError;
-  let userEmail;
-  if (loading || f_loading || git_loading || g_loading) {
+  let userName;
+  if (loading || f_loading || git_loading || g_loading || updating) {
     return <Loading />;
   }
-  if (error || f_error || git_error || g_error) {
-    signInError = <p className="text-red-500">{error.message}</p>;
-    console.log(error || f_error || git_error || g_error)
+  if (error || f_error || git_error || g_error || updateError) {
+    signInError = <p className="text-red-500">{error?.message || git_error?.message || g_error?.message || f_error?.message || updateError?.message}</p>;
   }
 
   if (user || f_user || git_user || g_user) {
-    console.log(user.user.email || f_user || git_user || g_user);
-    userEmail = (
-        <p>{user.user.email || f_user || git_user || g_user}</p>
+    
+    userName = (
+        <div>
+             <small className="text-purple-400">Sign Up Complete</small>
+        <p className="font-medium text-sm"> <span className="text-yellow-400">UserName</span> : {user?.user?.displayName}</p>
+        </div>
+       
     )
   }
 
-  const onSubmit = (data) => {
+  const onSubmit = async(data) => {
+    // console.log(data.name);
     // signInWithEmailAndPassword(data.email , data.password);
-    createUserWithEmailAndPassword(data.email, data.password)
-    console.log(data.email, data.password);
+    await createUserWithEmailAndPassword(data.email, data.password);
+    await updateProfile({displayName: data.name})
+    
    
   };
   return (
     <>
-      <div className="flex h-screen justify-center items-center ">
+      <div className="flex h-screen justify-center items-center mt-10">
         <div className="card flex w-96 bg-base-400 shadow-xl">
           <div className="card-body">
             <h2 className="card-title">Sing up</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
-              <div class="form-control w-full max-w-xs">
-                <label class="label">
-                  <span class="label-text">Enter Your Name ?</span>
+              <div className="form-control w-full max-w-xs">
+                <label className="label">
+                  <span className="label-text">Enter Your Name </span>
                 </label>
                 <input
                   type="text"
                   placeholder="Your Name"
-                  class="input input-bordered w-full max-w-xs"
+                  className="input input-bordered w-full max-w-xs"
                   {...register("name", {
                     required: {
                       value: true,
                       message: "Name is required",
                     },
                     pattern: {
-                      value: /^[a-zA-Z/1-9 ]{3,30}$/,
+                      value: /^[a-zA-Z/0-9 ]{3,30}$/,
                       message: "Name must be greater than 3 character",
                     },
                   })}
                 />
-                <label class="label">
+                <label className="label">
                   {errors.name?.type === "required" && (
                     <span className="text-red-400">{errors.name.message}</span>
                   )}
@@ -89,14 +95,14 @@ const SignUp = () => {
                   )}
                 </label>
               </div>
-              <div class="form-control w-full max-w-xs">
-                <label class="label">
-                  <span class="label-text">Enter Your Email ?</span>
+              <div className="form-control w-full max-w-xs">
+                <label className="label">
+                  <span className="label-text">Enter Your Email</span>
                 </label>
                 <input
                   type="email"
                   placeholder="Your email"
-                  class="input input-bordered w-full max-w-xs"
+                  className="input input-bordered w-full max-w-xs"
                   {...register("email", {
                     required: {
                       value: true,
@@ -108,7 +114,7 @@ const SignUp = () => {
                     },
                   })}
                 />
-                <label class="label">
+                <label className="label">
                   {errors.email?.type === "required" && (
                     <span className="text-red-400">{errors.email.message}</span>
                   )}
@@ -117,14 +123,14 @@ const SignUp = () => {
                   )}
                 </label>
               </div>
-              <div class="form-control w-full max-w-xs">
-                <label class="label">
-                  <span class="label-text">Enter Your Password</span>
+              <div className="form-control w-full max-w-xs">
+                <label className="label">
+                  <span className="label-text">Enter Your Password</span>
                 </label>
                 <input
                   type="password"
                   placeholder="Your Password"
-                  class="input input-bordered w-full max-w-xs"
+                  className="input input-bordered w-full max-w-xs"
                   {...register("password", {
                     required: {
                       value: true,
@@ -137,7 +143,7 @@ const SignUp = () => {
                     },
                   })}
                 />
-                <label class="label">
+                <label className="label">
                   {errors.password?.type === "required" && (
                     <span className="text-red-400">
                       {errors.password.message}
@@ -157,10 +163,10 @@ const SignUp = () => {
                 value="Signup"
               />
             </form>
-            <small>Email : {userEmail}</small>
-            <small className="text-emerald-400">
-              Already Have an account ..? <Link to="/login">Please Login</Link>
-            </small>
+            <span className="text-blue-400">{userName ?  userName :  <small className="text-emerald-400">
+              Already Have an account ..? <Link to="/login"> <span className="text-blue-400">Please Login</span> </Link>
+            </small>}</span>
+           
             <div className="divider">OR</div>
             <button
               onClick={() => signInWitGoogle()}
