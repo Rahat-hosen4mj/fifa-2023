@@ -56,7 +56,7 @@ const Navbar = () => {
              {navItem}
             </ul>
           </div>
-          <a href='www' className="btn btn-ghost font-bold text-2xl text-[#fe36f1]">FIFA-2023</a>
+          <a href='www' className="btn btn-ghost font-bold text-2xl text-[#0bf222]">FIFA-2023</a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal p-0 font-medium">
