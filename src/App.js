@@ -10,7 +10,7 @@ import NotFound from './Pages/Shared/NotFound';
 
 function App() {
   return (
-    <div className="px-8 md:px-12">
+    <div className="">
       <Navbar />
       <Routes>
         <Route path='/' element={<Home />}></Route>
