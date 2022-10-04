@@ -1,8 +1,13 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import image1 from "../../asset/images/event-3.png";
 import image2 from "../../asset/images/summer-celebration.jpg";
 
 const Upcoming = () => {
+  const navigate = useNavigate()
+  const navigateToUpcomInfoPage = id => {
+    navigate(`upcomeing/${id}`)
+  }
   return (
     <>
       
@@ -17,7 +22,7 @@ const Upcoming = () => {
               <h2 className="font-bold text-white text-3xl">Ea sports 2022</h2>
               <p>Lorem ipsum dolor sit ametLorem ipsum dolor sit amet, consectetur adipisicing elit. Similique debitis rerum quae.</p>
               <div className="card-actions">
-                <button className="btn btn-primary">Buy Now</button>
+                <button className="btn btn-primary">More Info</button>
               </div>
             </div>
           </div>
@@ -30,7 +35,7 @@ const Upcoming = () => {
               <h2 className="font-bold text-white text-3xl">Summer-celbration</h2>
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam mollitia dignissimos, debitis consectetur unde autem distinctio officia</p>
               <div className="card-actions">
-                <button className="btn btn-primary">Buy Now</button>
+                <button onClick={() => navigateToUpcomInfoPage(3)} className="btn btn-primary">More Info</button>
               </div>
             </div>
           </div>

@@ -2,6 +2,8 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import About from './Pages/About/About';
 import Home from './Pages/Home/Home';
+import PlayerInfo from './Pages/Home/PlayerInfo';
+import UpcomingInfo from './Pages/Home/UpcomingInfo';
 import Login from './Pages/Login/Login';
 import RequireAuth from './Pages/Login/RequireAuth';
 import SignUp from './Pages/Login/SignUp';
@@ -16,6 +18,8 @@ function App() {
         <Route path='/' element={<Home />}></Route>
         <Route path='/home' element={<Home />}></Route>
         <Route path='/about' element={<RequireAuth><About /></RequireAuth>}></Route>
+        <Route path='player/:playerId' element={<RequireAuth><PlayerInfo /></RequireAuth>}></Route>
+        <Route path='upcomeing/:upcomeingInfo' element={<RequireAuth><UpcomingInfo /></RequireAuth>}></Route>
         <Route path='/login' element={<Login />}></Route>
         <Route path='/signup' element={<SignUp />}></Route>
         <Route path='*' element={<NotFound />}></Route>

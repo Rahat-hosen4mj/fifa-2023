@@ -30,7 +30,7 @@ const Navbar = () => {
     )
   return (
     <>
-      <div className="navbar bg-[#0b4bcb] z-50 text-white opacity-100  sticky top-0">
+      <div className="navbar bg-[#0b4bcb] z-50 text-white opacity-100  sticky top-0 px-12">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex="0" className="btn btn-ghost lg:hidden">
@@ -58,7 +58,7 @@ const Navbar = () => {
           </div>
           <a href='www' className="btn btn-ghost font-bold text-2xl text-[#0bf222]">FIFA-2023</a>
         </div>
-        <div className="navbar-center hidden lg:flex">
+        <div className="navbar-end hidden lg:flex">
           <ul className="menu menu-horizontal p-0 font-medium">
           {navItem}
           </ul>

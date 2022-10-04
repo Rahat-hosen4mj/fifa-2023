@@ -8,7 +8,7 @@ const HomeBanner = () => {
         <h2 className="text-5xl md:text-7xl font-semibold text-white leading-tight">
           Conmebol <br /> copa america <br /> 2022
         </h2>
-        <button class="btn btn-secondary mt-10">Watch Live</button>
+        <button className="btn btn-secondary mt-10">Watch Live</button>
       </div>
       <div className="w-full md:max-w-lg" >
         <img className=""  src={banner} alt="" />

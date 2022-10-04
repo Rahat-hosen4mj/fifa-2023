@@ -1,0 +1,69 @@
+[
+    {
+        "id": "01",
+        "name": "Neymar",
+        "description": "Neymar da Silva Santos Júnior, known as Neymar, is a Brazilian professional footballer who plays as a forward for Ligue",
+        "img": "https://i.ibb.co/QPpH55T/player-1.png"
+    },
+    {
+        "id": "02",
+        "name": "Lionel Messi",
+        "description": "Lionel Andrés Messi, also known as Leo Messi, is an Argentine professional  1 club Paris Saint-Germain and captains the Argentina national team.!",
+        "img": " https://i.ibb.co/vjXgPRk/player-2.png"
+    },
+    {
+        "id": "03",
+        "name": "Cristiano Ronaldo",
+        "description": "Cristiano Ronaldo dos Santos Aveiro GOIH ComM is a Portuguese professional footballer who plays as a forward for Premier League club ",
+        "img": " https://i.ibb.co/hy75grk/player-3.png"
+    },
+    {
+        "id": "04",
+        "name": "Paulo Dybala",
+        "description": "Paulo Exequiel Dybala is an Argentine professional footballer who plays as a forward for Serie A club Juventus and the Argentina national team.",
+        "img": " https://i.ibb.co/84N80s2/player-4.png"
+    },
+    {
+        "id": "05",
+        "name": "Antoine Griezmann",
+        "description": "Antoine Griezmann is a French professional footballer who plays as a forward for La Liga club Atlético Madrid, on loan from Barcelona!",
+        "img": "https://i.ibb.co/G0by6XZ/player-5.png"
+    },
+    {
+        "id": "06",
+        "name": "Ángel Di María",
+        "description": "Ángel Fabián Di María is an Argentine professional footballer who plays for Ligue 1 club Paris Sainte Argentina national team.!",
+        "img": " https://i.ibb.co/VQTmgBB/player-6.png"
+    },
+    {
+        "id": "07",
+        "name": "Kylian Mbappé",
+        "description": "Kylian Mbappé Lottin is a French professional footballer who plays as a forward for Ligue 1 club Paris Saint-Germain!",
+        "img": "https://i.ibb.co/fqSZTFy/player-7.png"
+    },
+    {
+        "id": "08",
+        "name": "Mohamed Salah",
+        "description": "Mohamed Salah Hamed Mahrous Ghaly is an Egyptian professional footballer who plays as a forward for Premier League club!.",
+        "img": " https://i.ibb.co/3CJXQ6m/player-8.png"
+    },
+    {
+        "id": "06",
+        "name": "Ángel Di María",
+        "description": "Ángel Fabián Di María is an Argentine professional footballer who plays for Ligue 1 club Paris Sainte Argentina national team.!",
+        "img": " https://i.ibb.co/VQTmgBB/player-6.png"
+    },
+    {
+        "id": "07",
+        "name": "Kylian Mbappé",
+        "description": "Kylian Mbappé Lottin is a French professional footballer who plays as a forward for Ligue 1 club Paris Saint-Germain!",
+        "img": "https://i.ibb.co/fqSZTFy/player-7.png"
+    },
+    {
+        "id": "08",
+        "name": "Mohamed Salah",
+        "description": "Mohamed Salah Hamed Mahrous Ghaly is an Egyptian professional footballer who plays as a forward for Premier League club!.",
+        "img": " https://i.ibb.co/3CJXQ6m/player-8.png"
+    }
+
+]
