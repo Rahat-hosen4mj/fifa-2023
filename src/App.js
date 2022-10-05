@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import About from './Pages/About/About';
+import AddPlayer from './Pages/AddPlayer/AddPlayer';
 import Home from './Pages/Home/Home';
 import PlayerInfo from './Pages/Home/PlayerInfo';
 import UpcomingInfo from './Pages/Home/UpcomingInfo';
@@ -9,6 +10,8 @@ import RequireAuth from './Pages/Login/RequireAuth';
 import SignUp from './Pages/Login/SignUp';
 import Navbar from './Pages/Shared/Navbar';
 import NotFound from './Pages/Shared/NotFound';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
@@ -18,12 +21,14 @@ function App() {
         <Route path='/' element={<Home />}></Route>
         <Route path='/home' element={<Home />}></Route>
         <Route path='/about' element={<RequireAuth><About /></RequireAuth>}></Route>
+        <Route path='/addPlayer' element={<RequireAuth><AddPlayer /></RequireAuth>}></Route>
         <Route path='player/:playerId' element={<RequireAuth><PlayerInfo /></RequireAuth>}></Route>
         <Route path='upcomeing/:upcomeingInfo' element={<RequireAuth><UpcomingInfo /></RequireAuth>}></Route>
         <Route path='/login' element={<Login />}></Route>
         <Route path='/signup' element={<SignUp />}></Route>
         <Route path='*' element={<NotFound />}></Route>
       </Routes>
+      <ToastContainer />
       
     </div>
   );

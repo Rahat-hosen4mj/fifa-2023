@@ -21,6 +21,13 @@ const Navbar = () => {
             <li>
             <Link to="/about">About</Link>
             </li>
+            {
+              user && <>
+                  <li>
+            <Link to="/addPlayer">Add Player</Link>
+            </li>
+              </>
+            }
             <li>
               {
                 user ? <Link onClick={() => logout() } to="/login">Sign Out</Link> : <Link to="/login">Login</Link>
