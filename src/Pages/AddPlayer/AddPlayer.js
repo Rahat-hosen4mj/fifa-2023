@@ -42,7 +42,7 @@ const AddPlayer = () => {
         })
    };
   return (
-    <div className="border border-3 border-red-400 flex flex-col items-center">
+    <div className="border border-3 border-red-400 w-96 mx-auto px-8 shadow-sm">
     <h2 className="text-2xl">Add a new Player</h2>
     <form   onSubmit={handleSubmit(onSubmit)}>
 

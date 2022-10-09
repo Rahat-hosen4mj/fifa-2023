@@ -21,6 +21,9 @@ const Navbar = () => {
             <li>
             <Link to="/about">About</Link>
             </li>
+            <li>
+            <Link to="/practice">Practice</Link>
+            </li>
             {
               user && <>
                   <li>
@@ -69,8 +72,10 @@ const Navbar = () => {
           <ul className="menu menu-horizontal p-0 font-medium">
           {navItem}
           </ul>
-         
         </div>
+
+        
+        
        
       </div>
      
