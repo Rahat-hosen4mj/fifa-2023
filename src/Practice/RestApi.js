@@ -34,12 +34,10 @@ const RestApi = () => {
           </thead> 
           <tbody>
              {
-                users.map((user, index) =>  <tr>
+                users?.map((user, index) =>  <tr>
                     <th>{index +1}</th> 
                     <td>{user.name}</td> 
                     <td>{user.email}</td> 
-                   
-                    
                     <td>{user.address.city}</td> 
                     <td>{user.address.street}</td> 
                     <td>{user.phone}</td> 

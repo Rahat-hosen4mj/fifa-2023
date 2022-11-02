@@ -9,6 +9,7 @@ import auth from "../../firebase.init";
 import Loading from "../Shared/Loading";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import useToken from "../../hook/useToken";
 
 const Login = () => {
     const [
@@ -31,14 +32,19 @@ const Login = () => {
 
   let navigate = useNavigate();
   let location = useLocation();
+  const [token] = useToken(user || f_user || git_user || g_user)
 
   let from = location.state?.from?.pathname || "/";
+  // console.log('form sign in page', from);
 
+ 
+
+  // // this code for login without token
   useEffect(()=> {
-    if (user || f_user || git_user || g_user) {
+    if (token) {
       navigate(from, { replace: true });
     }
-  },[user,f_user, git_user, g_user, from, navigate])
+  },[token, from, navigate])
 
   let signInError ='';
   if (loading || f_loading || git_loading || g_loading) {
@@ -53,7 +59,7 @@ const Login = () => {
 
   const onSubmit = (data) => {
     signInWithEmailAndPassword(data.email , data.password)
-    console.log(data.email, data.password);
+    // console.log(data.email, data.password);
   };
   return (
     <>

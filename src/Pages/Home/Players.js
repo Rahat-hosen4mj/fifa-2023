@@ -1,15 +1,28 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { useQuery } from "react-query";
 import { toast } from "react-toastify";
 import Player from "./Player";
 
 const Players = () => {
-  const [players, setPlayers] = useState([]);
+//   const [players, setPlayers] = useState([]);
+//   const [id, setId] = useState(0)
 
-  useEffect(() => {
-    fetch("http://localhost:5000/player")
-      .then((res) => res.json())
-      .then((data) => setPlayers(data));
-  }, []);
+  const {data: players, isLoading, refetch } = useQuery(['players'], () => fetch('http://localhost:5000/player', {
+    method: "GET",
+    headers: {
+      // "content-type": "application/json",
+      authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+    }}).then(res => res.json()))
+
+  if(isLoading){
+    return <p>Loading...</p>
+  }
+
+//   useEffect(() => {
+//     fetch("http://localhost:5000/player")
+//       .then((res) => res.json())
+//       .then((data) => setPlayers(data));
+//   }, []);
   
   const handleDelete = (id) =>{
     const proceed = window.confirm('are you sure to delete');
@@ -20,8 +33,9 @@ const Players = () => {
       .then(res =>res.json())
       .then(data => {
         console.log(data);
-        const remain = players.filter(player => player._id !== id);
-        setPlayers(remain);
+        // const remain = players.filter(player => player._id !== id);
+        // setPlayers(remain);
+        refetch()
         toast.success('Player Delete successfully')
       })
     }

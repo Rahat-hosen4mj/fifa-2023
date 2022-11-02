@@ -9,7 +9,8 @@ import {
 import auth from "../../firebase.init";
 import Loading from "../Shared/Loading";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import useToken from "../../hook/useToken";
 
 const SignUp = () => {
     const [
@@ -32,6 +33,20 @@ const SignUp = () => {
     handleSubmit,
   } = useForm();
 
+  let navigate = useNavigate();
+  let location = useLocation();
+  let from = location.state?.from?.pathname || "/";
+  // console.log('form sign up page', from);
+
+  const [token] = useToken(user || f_user || git_user || g_user)
+
+ 
+    if (token) {
+      console.log('token from sign up', token)
+      navigate(from, { replace: true });
+    }
+  
+
   let signInError;
   let userName;
   if (loading || f_loading || git_loading || g_loading || updating) {
@@ -41,16 +56,16 @@ const SignUp = () => {
     signInError = <p className="text-red-500">{error?.message || git_error?.message || g_error?.message || f_error?.message || updateError?.message}</p>;
   }
 
-  if (user || f_user || git_user || g_user) {
+  // if (user || f_user || git_user || g_user) {
     
-    userName = (
-        <div>
-             <small className="text-purple-400">Sign Up Complete</small>
-        <p className="font-medium text-sm"> <span className="text-yellow-400">UserName</span> : {user?.user?.displayName}</p>
-        </div>
+  //   userName = (
+  //       <div>
+  //         <small className="text-purple-400">Sign Up Complete</small>
+  //       <p className="font-medium text-sm"> <span className="text-yellow-400">UserName</span> : {user?.user?.displayName}</p>
+  //       </div>
        
-    )
-  }
+  //   )
+  // }
 
   const onSubmit = async(data) => {
     // console.log(data.name);

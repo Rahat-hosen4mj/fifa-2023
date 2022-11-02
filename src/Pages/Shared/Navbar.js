@@ -7,37 +7,42 @@ import Loading from "./Loading";
 
 const Navbar = () => {
   const [user, loading] = useAuthState(auth);
-  if(loading){
-    return <Loading />
-  };
+  if (loading) {
+    return <Loading />;
+  }
   const logout = () => {
     signOut(auth);
+    localStorage.removeItem('accessToken')
   };
-    const navItem = (
+  const navItem = (
+    <>
+      <li>
+        <Link to="/">Home</Link>
+      </li>
+      <li>
+        <Link to="/about">About</Link>
+      </li>
+      <li>
+        <Link to="/practice">Practice</Link>
+      </li>
+      {user && (
         <>
-            <li>
-            <Link to="/">Home</Link>
-            </li>
-            <li>
-            <Link to="/about">About</Link>
-            </li>
-            <li>
-            <Link to="/practice">Practice</Link>
-            </li>
-            {
-              user && <>
-                  <li>
+          <li>
             <Link to="/addPlayer">Add Player</Link>
-            </li>
-              </>
-            }
-            <li>
-              {
-                user ? <Link onClick={() => logout() } to="/login">Sign Out</Link> : <Link to="/login">Login</Link>
-              }
-            </li>
+          </li>
         </>
-    )
+      )}
+      <li>
+        {user ? (
+          <Link onClick={() => logout()} to="/login">
+            Sign Out
+          </Link>
+        ) : (
+          <Link to="/login">Login</Link>
+        )}
+      </li>
+    </>
+  );
   return (
     <>
       <div className="navbar bg-[#0b4bcb] z-50 text-white opacity-100  sticky top-0 px-12">
@@ -63,22 +68,20 @@ const Navbar = () => {
               tabIndex="0"
               className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
-             {navItem}
+              {navItem}
             </ul>
           </div>
-          <a href='www' className="btn btn-ghost font-bold text-2xl text-[#0bf222]">FIFA-2023</a>
+          <a
+            href="www"
+            className="btn btn-ghost font-bold text-2xl text-[#0bf222]"
+          >
+            FIFA-2023
+          </a>
         </div>
         <div className="navbar-end hidden lg:flex">
-          <ul className="menu menu-horizontal p-0 font-medium">
-          {navItem}
-          </ul>
+          <ul className="menu menu-horizontal p-0 font-medium">{navItem}</ul>
         </div>
-
-        
-        
-       
       </div>
-     
     </>
   );
 };

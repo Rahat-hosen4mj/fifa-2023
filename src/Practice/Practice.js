@@ -14,8 +14,10 @@ const Practice = () => {
           OpenSidebar
           </label>
 
-        <h2 className="text-3xl text-purple-500">This is Dashboard</h2>
+        <h2 className="text-3xl text-purple-500 ml-5">This is Dashboard</h2>
+        <div className="px-5">
         <Outlet></Outlet>
+        </div>
           {/* <!-- Page content here --> */}
          
         </div>
@@ -27,6 +29,9 @@ const Practice = () => {
               <Link to='/practice'>Meal Db</Link>
             </li>
             <li>
+              <Link to='/practice/allUser'>All User</Link>
+            </li>
+            <li>
               <Link to='/practice/dayPicker'>Day Picker</Link>
             </li>
             <li>
@@ -34,6 +39,9 @@ const Practice = () => {
             </li>
             <li>
             <Link to='/practice/restApi'>RestApi</Link>
+            </li>
+            <li>
+            <Link to='/practice/filter'>Filter</Link>
             </li>
           </ul>
         </div>
