@@ -19,6 +19,7 @@ import DayPicker from './Practice/DatePicker';
 import RestApi from './Practice/RestApi';
 import Filter from './Practice/Filter';
 import AllUser from './Practice/AllUser';
+import ImgCroper from './Practice/ImgCroper';
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
           <Route path='restCountries' element={<RestCountries />}></Route>
           <Route path='restApi' element={<RestApi />}></Route>
           <Route path='filter' element={<Filter />}></Route>
+          <Route path='imgCroper' element={<ImgCroper />}></Route>
         </Route>
         <Route path='/addPlayer' element={<RequireAuth><AddPlayer /></RequireAuth>}></Route>
         <Route path='player/:playerId' element={<RequireAuth><PlayerInfo /></RequireAuth>}></Route>

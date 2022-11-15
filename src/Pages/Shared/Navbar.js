@@ -72,7 +72,7 @@ const Navbar = () => {
             </ul>
           </div>
           <a
-            href="www"
+            href="#home"
             className="btn btn-ghost font-bold text-2xl text-[#0bf222]"
           >
             FIFA-2023

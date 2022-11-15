@@ -21,7 +21,11 @@ const AllUser = () => {
         if(proceed){
             // console.log('delete user btn clicked', id);
             fetch(`http://localhost:5000/user/${id}`,{
-                method: "DELETE"
+                method: "DELETE",
+                headers: {
+                  // "content-type": "application/json",
+                  authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+                }
             })
             .then(res => res.json())
             .then(data => {
@@ -33,7 +37,7 @@ const AllUser = () => {
     }
     return (
         <div>
-        <h2 className="my-2 font-medium">All users page : {users.length} </h2>
+        <h2 className="my-2 font-medium">All users page : {users?.length} </h2>
         <div className="overflow-x-auto">
           <table className="table w-full">
             <thead>
@@ -46,7 +50,7 @@ const AllUser = () => {
             </thead>
             <tbody>
               {
-                  users.map((user, index) => <UserRow user={user} refetch={refetch} deleteUser={deleteUser}  index={index} key={user._id}></UserRow>)
+                  users?.map((user, index) => <UserRow user={user} refetch={refetch} deleteUser={deleteUser}  index={index} key={user._id}></UserRow>)
               }
               
             </tbody>

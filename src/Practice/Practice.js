@@ -43,6 +43,9 @@ const Practice = () => {
             <li>
             <Link to='/practice/filter'>Filter</Link>
             </li>
+            <li>
+            <Link to='/practice/imgCroper'>Img Croper</Link>
+            </li>
           </ul>
         </div>
       </div>
